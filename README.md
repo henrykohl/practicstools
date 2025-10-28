@@ -111,3 +111,8 @@
 * (1:04:48) 執行 `mlflow ui`
 
 * (1:07:30) Demo run `mlflow ui` locally (1:16:24 done)
+
+# Reference -- 補充
+
+* [機器學習：建立線性迴歸資料與預測！](https://ithelp.ithome.com.tw/articles/10197248)
+    > `regressionmlflow.ipynb`
