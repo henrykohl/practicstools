@@ -9,16 +9,15 @@ def calculator(a,b,operation=None):
         return (a*b)
     if operation == "div":
         return (a/b)
-
+    
 
 
 if __name__ == '__main__':
     a,b,opt=10454,314046,"add" ## a,b,opt=104,314,"sub" (再次測試)
     with mlflow.start_run():  ## 意味著 MLflow server will start
         result=calculator(a,b,opt)
-        mlflow.log_params("a",a)
-        mlflow.log_params("b",b)
-        mlflow.log_params("opt",opt)
-        print(f"my result is {result}")
+        mlflow.log_param("a",a)
+        mlflow.log_param("b",b)
+        mlflow.log_param("opt",opt)
         print(f"my result regrading {opt} is {result}")
-        mlflow.log_params("result", result)
+        mlflow.log_param("result", result)
