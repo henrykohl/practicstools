@@ -202,7 +202,7 @@
 * (44:29) 修改 `requirements.txt`
   ```txt
   pandas
-  dvs
+  dvc
   ```
 * [Get Started with DVC](https://dvc.org/doc/start)
 
