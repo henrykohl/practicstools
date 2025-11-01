@@ -176,7 +176,7 @@
   git commit -m "second commit"
   git log
 
-  git checkout 編號 # 編號是 commit id
+  git checkout 編號 # 編號是 commit id (讓檔案回到對應此 commit id 當時的狀態)
   ```
 
 * (37:20) 執行
