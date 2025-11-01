@@ -223,17 +223,18 @@
   ```
   
 * (51:12) 執行 `dvc init`
-  > 自動建立 `.dvcignore`
+  > 自動建立 `.dvcignore` 與 `/.dvc` 資料夾
 
 * (53:08) 查看 `.dvc` 資料夾
+  > 內含 `config` 與 `.gitignore` 檔案，以及 `/tmp` 資料夾
 
-* (56:35) 執行 `git status`
+* (56:35) 執行 `git status` 顯示
   ```txt
   .dvc/.gitignore
   .dvc/config
   .dvcignore
   ```
-  > Changes to be committed automatically
+  > Changes to be committed (自動產生)
 
 * (58:10) 執行 
   ```bash
@@ -241,8 +242,9 @@
   git status
   ```
 
-* (1:00:07) `dvc add data/data.csv`
-  > 產生 `data.csv.dvc` 檔案
+* (1:00:07) 執行 `dvc add data/data.csv` 後，在`/data` 資料夾之下，
+  > 產生 `data.csv.dvc` 檔案 \
+  > 產生 `.gitignore` 檔案
 
 * (1:04:31) 
   <pre>
@@ -259,7 +261,7 @@
 * (1:13:40) 執行 `git status`
 
 * (1:14:45) 執行 `git commit -m "fourth commit"`
-  > "nothing added to commit..."
+  > "nothing added to commit..." (fourth commit 應該是不需要，因為沒有任何檔案狀態有所改變)
 
 * (1:15:59) 新增一行資料 `data/data.csv`
   ```csv
@@ -274,7 +276,7 @@
 
 * (1:17:00) 執行 `git status`，沒有新的改變 
 
-* `.dvc` 資料夾中產生 `/cache` 資料夾
+* `.dvc` 資料夾中產生 `/cache` 資料夾，裡面有兩個資料夾，名稱其實就是 md5 的 id 開頭的字串前兩碼
 
 * (1:18:40) 再新增一行資料 `data/data.csv`
   ```csv
@@ -285,6 +287,8 @@
 * (1:18:52) 執行 `dvc add data/data.csv`
   > `.dvc/cache` 中 又會新增一個資料夾 \
   > 在 `data.csv.dvc` 中 md5 的 id 又再次發生改變
+
+* 這裡要在 `data/data.csv` 中刪除後三行，但 lecture demo出現一些問題，所以就跳過
 
 * (1:20:56) 再新增一行資料 `data/data.csv`
   ```csv
@@ -335,11 +339,12 @@
 
 * (1:31:52) 執行 
   ```bash
-  git add data/data.csv.dvc ## md5 的 id 改變
+  dvc add data/data.csv ## md5 的 id 改變
+  git add data/data.csv.dvc 
   git commit -m "third version"
   ```
 
-* (1:32:33) 在 `data/data.csv` 中刪除最後三四筆資料，保留前四筆資料
+* (1:32:33) 在 `data/data.csv` 中刪除最後四筆資料，保留前四筆資料
 
 * (1:32:40) 執行 
   ```bash
@@ -349,7 +354,7 @@
   ```
 
 * (1:33:55) 執行 `git log`
-  > 複製一個 commit 的 **id**
+  > 複製一個 commit 的 **id** (lecture demo 複製 second version)
 
 * (1:34:31) 執行 
   ```bash
@@ -358,14 +363,14 @@
   ```
 
 * (1:35:29) 再次執行 `git log`
-  > 複製 second version 的 commit 的 **id**
+  > 複製 first version 的 commit 的 **id**
 
 * (1:35:42) 執行 
   ```bash
   git checkout 剛複製的id
   dvc checkout
   ```
-  > `data/data.csv` 改變成對應的版本 (second version)
+  > `data/data.csv` 改變成對應的版本 (first version)
 
 * (1:36:10) 複製 third version 的 commit 的 **id**
   ```bash
@@ -374,16 +379,23 @@
   ```
   > `data/data.csv` 改變成對應的版本 (third version)
 
+---
+
 * (1:43:23) `dvc remote add -d remote_storage local_path` 
   > remote_storage 與 local_workspace_path 依據實際的環境輸入
 
 * (1:45:53) 執行 `dvc push`
+  > 產生 `/files` 資料夾，Lecture Demo 隨後把此資料夾刪除
 
 * 建立 `myremotestorage` 資料夾
   
-* (1:48:46) 執行 `dvc remote add -d remote_storage2 /config/workspace/myremotestorage`
+* (1:48:46) 執行 
+  ```bash
+  dvc remote add -d remote_storage2 /workspaces/practicstools/myremotestorage ## 用 codeanywhere 實作的路徑
+  dvc push
+  ```
 
-* (1:49:35) 在 `/myremotestorage` 中的檔案新增兩筆資料
+* (1:49:35) 在 `/myremotestorage` 中的檔案，對其新增兩筆資料
   ```txt
   ...
   aditya,31,pune
@@ -399,7 +411,7 @@
 
 * () Lecture 這裡有點亂（發生問題，解決時，commands 被擋住）
   ```bash
-  git commit .dvc/config
+  #git commit .dvc/config ## demo 打錯
   git add .dvc/config
   git commit -m "config added"
   dvc push
