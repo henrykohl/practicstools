@@ -1,6 +1,8 @@
 # practicstools -- MLflow Demo
 
-* A portion of [Lecture 13 -- MLFlow & DVC integration - Part 3](https://www.youtube.com/watch?v=aS466KYOxB4)
++ A portion of [Lecture 13 -- MLFlow & DVC integration - Part 3](https://www.youtube.com/watch?v=aS466KYOxB4)
+
++ 找不到符合的 Resource，能找到最接近的 Resource: [MLFlow - Demo](https://github.com/sunnysavita10/MLFlow-Demo)
 
 * (18:05) 啟用新個 Conda Lab -- practicstools
     > 等同建立新的 GitHub
