@@ -1,4 +1,4 @@
-[NewTaipeiWifi](https://newtaipei.cht.com.tw/internet/)
+[NewTaipeiWifi](https://newtaipei.cht.com.tw/?tmst=1790814733)
 # practicstools -- MLflow Demo
 
 + A portion of [Lecture 13 -- MLFlow & DVC integration - Part 3](https://www.youtube.com/watch?v=aS466KYOxB4)
